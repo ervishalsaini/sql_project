@@ -1,0 +1,16 @@
+								FAKE NEWS DETECTION 
+1. Find top 10 records of dataset.
+select * from fake limit 10;
+
+2. Find last 10 records of dataset. 
+select * from fake order by newdate desc limit 10;
+
+3. Calculate total no of reecords in dataset.
+select title , text, subject , newdate from (select * , row_number() over (order by newdate ) row_ranking from fake )x where x.row_ranking <= 10;
+
+4. Count the total no of data( rows) in datasets.
+select count(*) as Total_Counts from fake;
+
+5. Find the records of date greater than 2014.
+select * from fake where newdate > "31-12-2014";
+
